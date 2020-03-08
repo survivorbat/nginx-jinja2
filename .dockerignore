@@ -1,0 +1,5 @@
+.gitignore
+.dockerignore
+azure-pipelines.yaml
+Dockerfile
+Makefile

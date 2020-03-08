@@ -1,0 +1,47 @@
+trigger:
+  paths:
+    include:
+      - Dockerfile
+      - azure-pipelines.yaml
+      - bin
+  branches:
+    include:
+      - master
+
+variables:
+  vmImage: "ubuntu-16.04"
+  repository: "survivorbat/nginx-jinja2"
+
+stages:
+  - stage: BuildAndPublish
+    displayName: Build and publish Image
+    jobs:
+      - job: BuildAndPublish
+        displayName: Build and Publish image
+        strategy:
+          matrix:
+            v1.17.9:
+              nginx_base_version: 1.17.9
+            v1.16.1:
+              nginx_base_version: 1.16.1
+        pool:
+          vmImage: $(vmImage)
+        steps:
+          - task: Docker@2
+            displayName: Build scratch image
+            inputs:
+              command: build
+              repository: $(repository)
+              arguments: --build-arg nginx_base_version=$(nginx_base_version)
+              tags: |
+                $(nginx_base_version)
+
+          - task: Docker@2
+            displayName: Publish scratch image
+            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+            inputs:
+              containerRegistry: 'DockerHub'
+              command: push
+              repository: $(repository)
+              tags: |
+                $(nginx_base_version)
