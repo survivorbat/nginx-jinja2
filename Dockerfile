@@ -8,4 +8,4 @@ RUN apk add --no-cache --update \
 
 COPY . /
 
-ENTRYPOINT /bin/docker-entrypoint
+ENTRYPOINT ["/bin/docker-entrypoint"]
