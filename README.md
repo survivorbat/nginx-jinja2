@@ -1,4 +1,4 @@
-# Terraform Image
+# Nginx-Jinja2 Image
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/survivorbat/nginx-jinja2)
 
