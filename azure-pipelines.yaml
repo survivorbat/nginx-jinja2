@@ -22,6 +22,12 @@ stages:
           matrix:
             v1.17.9:
               nginx_base_version: 1.17.9
+            v1.17.8:
+              nginx_base_version: 1.17.8
+            v1.17.7:
+              nginx_base_version: 1.17.7
+            v1.17.6:
+              nginx_base_version: 1.17.6
             v1.16.1:
               nginx_base_version: 1.16.1
         pool:
