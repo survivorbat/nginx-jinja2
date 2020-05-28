@@ -20,8 +20,8 @@ stages:
         displayName: Build and Publish image
         strategy:
           matrix:
-            v1.17.10:
-              nginx_base_version: 1.17.10
+            v1.18.0:
+              nginx_base_version: 1.18.0
         pool:
           vmImage: $(vmImage)
         steps:
