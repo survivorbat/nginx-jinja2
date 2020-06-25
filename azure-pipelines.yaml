@@ -2,11 +2,6 @@ trigger:
   tags:
     include:
       - "*.*.*"
-  branches:
-    include:
-      - master
-      - develop
-      - feature/*
 
 variables:
   vmImage: "ubuntu-16.04"
